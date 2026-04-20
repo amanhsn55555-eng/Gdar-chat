@@ -1123,6 +1123,66 @@ body {
     50% { transform: rotate(0deg); }
 }
   
+      /* ========== مربع النشر السريع ========== */
+    .quick-publish-wrapper {
+      margin-top: 8px;
+      background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important;
+      border: none !important;
+      box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important;
+      border-radius: 30px !important;
+      padding: 2px 2px 2px 10px !important;
+      display: flex;
+      align-items: center;
+    }
+
+    .quick-publish-wrapper i { 
+      color: #fbbf24; 
+      font-size: 13px; 
+      margin-left: 5px;
+    }
+    
+    .quick-publish-wrapper input {
+      flex: 1;
+      border: none;
+      padding: 8px 8px 8px 0;
+      font-size: 13px;
+      background: transparent;
+      outline: none;
+      direction: rtl;
+      font-weight: 500;
+    }
+    
+    .quick-publish-wrapper input::placeholder { 
+      color: #94a3b8; 
+      font-size: 11px; 
+    }
+    
+    .quick-publish-wrapper button {
+      background: linear-gradient(145deg, #e2e8f0, #cbd5e1) !important;
+      box-shadow: inset 1px 1px 3px #ffffff, inset -1px -1px 3px #94a3b8, 2px 2px 5px rgba(0,0,0,0.1) !important;
+      color: #475569 !important;
+      border: none;
+      padding: 7px 12px;
+      border-radius: 40px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+      margin-right: 2px;
+    }
+
+    .quick-publish-wrapper button i {
+      color: #fbbf24;
+      font-size: 11px;
+    }
+
+    /* إخفاء أيقونة الجرس */
+    .mini-search-wrapper button i.fa-bell {
+      display: none !important;
+    }
   </style>
 </head>
 <body>
@@ -1159,8 +1219,18 @@ body {
 
     </div>
 </div>
+  <!-- ========== مربع النشر السريع الجديد ========== -->
+  <div class="quick-publish-wrapper">
+      <i class="fas fa-pn"></i>
+      <input type="text" id="quickPublishInput" placeholder="اكتب منشورك هنا💠 ..." autocomplete="off">
+      <button onclick="window.quickPublish()">
+          <i class="fas fa-paper-plane"></i> نشر
+      </button>
+  </div>
+</div>
 </div>
 
+  
 <main class="app-container">
     <!-- صف الستوريات الأفقي -->
     <div id="storiesContainer" class="stories-row"></div>
@@ -1197,37 +1267,7 @@ body {
 </footer>
 
 <!-- نافذة النشر -->
-<div class="modal-overlay" id="publishModal">
-  <div class="modal-sheet">
-    <div class="modal-header">
-      <h3><i class="fas fa-feather-alt" style="color: #fbbf24; margin-left: 8px;"></i> ✍️ منشور جديد</h3>
-      <button class="close-btn" onclick="window.closeModal('publishModal')">&times;</button>
-    </div>
-    <div class="publish-form">
-      <textarea id="postText" class="publish-textarea" placeholder="اكتب منشور اساسي..." rows="4"></textarea>
-      <input type="text" id="postMediaUrl" placeholder="منشور اضافي..." style="width:100%; padding:12px; border-radius:30px; border:2px solid #e2e8f0; margin:10px 0;">
-      <div style="margin:20px 0; display: flex; align-items: center; gap: 15px;">
-        <label style="font-weight:600; display: flex; align-items: center; gap: 8px;">
-          <i class="fas fa-chart-line" style="color: #fbbf24;"></i> ترويج (X):
-        </label>
-        <select id="promoDays" class="promo-select">
-          <option value="0">بدون ترويج</option>
-          <option value="1">يوم واحد - 1 إكسير</option>
-          <option value="7">7 أيام - 7 إكسير</option>
-          <option value="30">30 يوم - 30 إكسير</option>
-        </select>
-      </div>
-      <div style="display:flex; justify-content:space-between; align-items: center;">
-        <span id="charCounter" style="color: #64748b;">0/500</span>
-        <button class="btn-save" style="width:auto; padding:14px 30px;" onclick="window.publishPost()">
-          نشر <i class="fas fa-paper-plane"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- نافذة التعليقات -->
 <div class="modal-overlay" id="commentsModal">
   <div class="modal-sheet">
     <div class="modal-header">
@@ -1596,6 +1636,89 @@ const firebaseConfig = {
     }
   }
 
+  // ========== دالة النشر السريع الجديدة ==========
+  window.quickPublish = async function() {
+    const input = document.getElementById('quickPublishInput');
+    if (!input) return;
+    
+    const value = input.value.trim();
+    if (!value) {
+      showToast('الرجاء كتابة نص أو إضافة رابط', false);
+      return;
+    }
+    
+    if (!currentUser) {
+      showToast('يجب تسجيل الدخول', false);
+      return;
+    }
+    
+    let content = '';
+    let mediaUrl = '';
+    let mediaType = null;
+    
+    // التحقق مما إذا كان المدخل رابط
+    const urlPattern = /(https?:\/\/[^\s]+)/g;
+    const urls = value.match(urlPattern);
+    
+    if (urls && urls.length > 0) {
+      // استخراج أول رابط
+      mediaUrl = urls[0];
+      // استخراج النص بدون الرابط
+      content = value.replace(mediaUrl, '').trim();
+      
+      // تحديد نوع الوسائط
+      if (mediaUrl.includes('youtube.com') || mediaUrl.includes('youtu.be')) {
+        mediaType = 'youtube';
+        const videoId = mediaUrl.split('v=')[1]?.split('&')[0] || mediaUrl.split('/').pop();
+        mediaUrl = `https://www.youtube.com/embed/${videoId}`;
+      } else if (mediaUrl.match(/\.(jpeg|jpg|gif|png|webp)$/i)) {
+        mediaType = 'image';
+      } else {
+        mediaType = 'image'; // افتراضي
+      }
+    } else {
+      // نص فقط
+      content = value;
+    }
+    
+    if (content.length > 500) {
+      showToast('الحد الأقصى 500 حرف', false);
+      return;
+    }
+    
+    const newPost = {
+      userId: currentUserData?.userId || currentUser.uid.slice(0, 6),
+      username: currentUserData?.username || 'مستخدم',
+      emoji: currentUserData?.emoji || '😎',
+      avatarType: currentUserData?.avatarType || 'emoji',
+      avatarUrl: currentUserData?.avatarUrl || '',
+      colors: currentUserData?.colors || { frame: '#fbbf24', name: '#0f172a', id: '#8b5cf6', postText: '#334155', commentText: '#475569' },
+      verified: currentUserData?.verified || false,
+      content: content || '📷',
+      mediaUrl: mediaUrl || '',
+      mediaType: mediaType,
+      timestamp: Date.now(),
+      likes: 0,
+      likedBy: [],
+      comments: [],
+      views: 0,
+      shares: 0,
+      reports: [],
+      promotedUntil: 0
+    };
+    
+    try {
+      await addDoc(collection(db, "posts"), newPost);
+      
+      // مسح الحقل
+      input.value = '';
+      
+      showToast('✨ تم نشر منشورك');
+    } catch (error) {
+      console.error('خطأ في النشر:', error);
+      showToast('❌ فشل النشر', false);
+    }
+  };
   function subscribeToUnreadMessages() {
     if (!currentUser) return;
     if (unsubscribeChats) unsubscribeChats();
