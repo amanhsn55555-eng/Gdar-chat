@@ -9,7 +9,181 @@
   <style>
   
   
-  .compact-header .resources-row,.compact-footer .footer-icon,.compact-footer .account-icon-wrapper,.compact-footer .publish-oil-btn~.footer-icon{display:none!important}
+  /* عكس اتجاه الصفحة بالكامل - يصبح المحتوى من اليسار إلى اليمين */
+    
+    
+  
+body, 
+.app-container, 
+.post-card, 
+.modal-sheet, 
+.compact-header, 
+.compact-footer,
+* {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+/* إعادة ضبط النصوص العربية لتظهر بشكل صحيح (من اليمين لليسار) */
+.post-content,
+.post-username,
+.user-id-badge,
+.comment-text,
+.comment-author,
+.modal-header h3,
+.resource-label,
+.resource-value,
+.footer-icon span,
+.account-label,
+.story-name,
+.btn-save,
+.btn-danger,
+input,
+textarea,
+select,
+button,
+#toastMsg,
+.relationship-status,
+.partner-info,
+.trend-badge,
+.profile-details *,
+.menu-modal *,
+.publish-form * {
+    text-align: right !important;
+    direction: rtl !important;
+}
+
+/* استثناء بعض العناصر التي يجب أن تبقى بالاتجاه الافتراضي (مثل الأيقونات أو الحاويات المرنة) */
+.post-interactions,
+.post-menu,
+.resources-row,
+.search-row,
+.modal-header,
+.profile-header,
+.followers-stats,
+.avatar-selector,
+.image-grid,
+.color-row,
+.modal-overlay .modal-sheet .modal-header button,
+.post-avatar,
+.follower-info,
+.comment-header {
+    direction: ltr !important;
+}
+
+/* عكس مكان الأزرار والعناصر في الهيدر والفوتر */
+.compact-header .resources-row {
+    flex-direction: row-reverse !important;
+}
+
+.mini-search-wrapper {
+    flex-direction: row-reverse !important;
+}
+
+.mini-search-wrapper input {
+    text-align: right !important;
+}
+
+.compact-footer {
+    flex-direction: row-reverse !important;
+}
+
+/* عكس اتجاه السهم والأيقونات في القوائم */
+.post-menu i,
+.settings-icon i,
+.close-btn i {
+    transform: scaleX(-1) !important;
+}
+
+/* تعديل الهوامش لتتناسب مع الوضع الجديد */
+.post-avatar {
+    margin-right: 0 !important;
+    margin-left: 12px !important;
+}
+
+.post-user-details {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+}
+
+.interact-btn i {
+    margin-right: 0 !important;
+    margin-left: 5px !important;
+}
+
+/* عكس النوافذ المنبثقة */
+.modal-sheet {
+    text-align: right !important;
+}
+
+.modal-header .close-btn {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+/* عكس أيقونة البحث */
+.mini-search-wrapper i.fa-search {
+    margin-right: 0 !important;
+    margin-left: 5px !important;
+}
+
+/* تصحيح مظهر قائمة التعليقات */
+.comment-item {
+    flex-direction: row !important;
+}
+
+.comment-avatar {
+    margin-right: 0 !important;
+    margin-left: 10px !important;
+}
+
+/* عكس صفحة الملف الشخصي */
+#profileModal .modal-sheet {
+    direction: ltr !important;
+}
+
+#profileDetails > div:first-child {
+    flex-direction: row-reverse !important;
+}
+
+#profileDetails .relationship-status {
+    display: inline-block !important;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+}
+
+/* ضبط مظهر الستوريات */
+.stories-row {
+    flex-direction: row !important;
+}
+
+.story-item {
+    margin-right: 0 !important;
+    margin-left: 15px !important;
+}
+/* عكس أيقونات التفاعل في المنشورات - من اليمين لليسار */
+.post-interactions {
+    direction: rtl !important;
+}
+
+.post-interactions .interact-btn {
+    display: flex !important;
+    flex-direction: row-reverse !important;
+    direction: rtl !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    gap: 5px !important;
+}
+
+.post-interactions .interact-btn i {
+    margin-right: 0 !important;
+    margin-left: 5px !important;
+    order: 2 !important;
+}
+
+.post-interactions .interact-btn span {
+    order: 1 !important;
+}
   .post-card, .interact-btn, .interact-btn *, .post-interactions, .post-interactions * { transform: none !important; transition: none !important; animation: none !important; }
   
     #profileModal .modal-header { display: none !important; } #profileModal .settings-icon { display: none !important; } #profileModal .close-btn { display: flex !important; position: absolute !important; top: 15px !important; right: 15px !important; z-index: 9999 !important; background: #1a1a2e !important; color: #fff !important; width: 40px !important; height: 40px !important; border-radius: 50% !important; align-items: center !important; justify-content: center !important; font-size: 22px !important; border: 2px solid #fbbf24 !important; cursor: pointer !important; }
@@ -281,6 +455,10 @@
     }
 
     /* تنسيق خاص للمعرف حسب عدد الأرقام */
+    /* ========== إخفاء المعرف من المنشورات ========== */
+.post-card .user-id-badge {
+    display: none !important;
+}
     .id-1-digit {
       color: #00ff00 !important;
       font-size: 16px !important;
@@ -657,13 +835,6 @@
       flex-shrink: 0;
     }
 
-  .compact-footer { 
-    display: none !important; 
-}
-
-body { 
-    padding-bottom: 10px !important; 
-}
     .comment-avatar img {
       width: 100%;
       height: 100%;
@@ -1123,66 +1294,657 @@ body {
     50% { transform: rotate(0deg); }
 }
   
-      /* ========== مربع النشر السريع ========== */
-    .quick-publish-wrapper {
-      margin-top: 8px;
-      background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important;
-      border: none !important;
-      box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important;
-      border-radius: 30px !important;
-      padding: 2px 2px 2px 10px !important;
-      display: flex;
-      align-items: center;
-    }
+  /* ========== تعديل علامة "مروّج" إلى نجمة فقط ========== */
+  
+  
+.post-card.promoted::before {
+    content: "❄️" !important;
+    position: absolute;
+    top: 10px;
+    left: 14px;
+    background: transparent !important;
+    color: #fbbf24 !important;
+    font-size: 6px !important;
+    font-weight: normal !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    z-index: 2;
+    text-shadow: 0 0 15px #fbbf24, 0 0 30px #f59e0b !important;
+    animation: starPulse 1.5s ease-in-out infinite alternate !important;
+}
 
-    .quick-publish-wrapper i { 
-      color: #fbbf24; 
-      font-size: 13px; 
-      margin-left: 5px;
+@keyframes starPulse {
+    from { 
+        text-shadow: 0 0 5px #fbbf24, 0 0 10px #fbbf24; 
+        transform: scale(1) rotate(0deg); 
     }
-    
-    .quick-publish-wrapper input {
-      flex: 1;
-      border: none;
-      padding: 8px 8px 8px 0;
-      font-size: 13px;
-      background: transparent;
-      outline: none;
-      direction: rtl;
-      font-weight: 500;
+    to { 
+        text-shadow: 0 0 20px #fbbf24, 0 0 40px #f59e0b; 
+        transform: scale(1.2) rotate(10deg); 
     }
-    
-    .quick-publish-wrapper input::placeholder { 
-      color: #94a3b8; 
-      font-size: 11px; 
-    }
-    
-    .quick-publish-wrapper button {
-      background: linear-gradient(145deg, #e2e8f0, #cbd5e1) !important;
-      box-shadow: inset 1px 1px 3px #ffffff, inset -1px -1px 3px #94a3b8, 2px 2px 5px rgba(0,0,0,0.1) !important;
-      color: #475569 !important;
-      border: none;
-      padding: 7px 12px;
-      border-radius: 40px;
-      font-size: 11px;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      white-space: nowrap;
-      margin-right: 2px;
-    }
+}
 
-    .quick-publish-wrapper button i {
-      color: #fbbf24;
-      font-size: 11px;
-    }
+/* ========== إخفاء نصوص الترند والأفضل وإظهار أيقونات فقط ========== */
 
-    /* إخفاء أيقونة الجرس */
-    .mini-search-wrapper button i.fa-bell {
-      display: none !important;
+  
+/* إخفاء النص الأصلي */
+.trend-badge {
+    background: transparent !important;
+    color: transparent !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+    position: relative !important;
+    box-shadow: none !important;
+    animation: none !important;
+}
+
+/* الترند #1 - 🔥 */
+.trend-badge[style*="background:#dc2626"]::before,
+.trend-badge[style*="background: #dc2626"]::before {
+    content: "🌧️" !important;
+    font-size: 14px !important;
+    color: #dc2626 !important;
+    background: transparent !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-shadow: 0 0 15px #dc2626, 0 0 30px #ef4444 !important;
+    animation: fireGlow 1s ease-in-out infinite alternate !important;
+}
+
+/* الترند #2 - ⚡ */
+.trend-badge[style*="background:#10b981"]::before,
+.trend-badge[style*="background: #10b981"]::before {
+    content: "🌩️" !important;
+    font-size: 14px !important;
+    color: #10b981 !important;
+    background: transparent !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-shadow: 0 0 15px #10b981, 0 0 30px #34d399 !important;
+    animation: boltFlash 0.8s ease-in-out infinite alternate !important;
+}
+
+/* الترند #3 - 💫 */
+.trend-badge[style*="background:#3b82f6"]::before,
+.trend-badge[style*="background: #3b82f6"]::before {
+    content: "🌩️ " !important;
+    font-size: 14px !important;
+    color: #3b82f6 !important;
+    background: transparent !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-shadow: 0 0 15px #3b82f6, 0 0 30px #60a5fa !important;
+    animation: starSpin 2s linear infinite !important;
+}
+
+/* الأفضل #1 - ⭐ */
+.trend-badge[style*="background:#dc2626"][style*="الأفضل"]::before,
+.post-card:not(.promoted) .trend-badge[style*="background:#dc2626"]::before {
+    content: "🌪️ " !important;
+    font-size: 14px !important;
+    color: #FFD700 !important;
+    text-shadow: 0 0 15px #FFD700, 0 0 30px #FFA500 !important;
+    animation: starTwinkle 1.5s ease-in-out infinite !important;
+}
+
+/* الأفضل #2 - 🌟 */
+.trend-badge[style*="background:#10b981"][style*="الأفضل"]::before,
+.post-card:not(.promoted) .trend-badge[style*="background:#10b981"]::before {
+    content: "🌪️" !important;
+    font-size: 14px !important;
+    color: #10b981 !important;
+    text-shadow: 0 0 15px #10b981, 0 0 30px #34d399 !important;
+    animation: starTwinkle 1.8s ease-in-out infinite !important;
+}
+
+/* الأفضل #3 - 💎 */
+.trend-badge[style*="background:#3b82f6"][style*="الأفضل"]::before,
+.post-card:not(.promoted) .trend-badge[style*="background:#3b82f6"]::before {
+    content: "🌪️" !important;
+    font-size: 14px !important;
+    color: #3b82f6 !important;
+    text-shadow: 0 0 15px #3b82f6, 0 0 30px #93c5fd !important;
+    animation: diamondShine 2s ease-in-out infinite !important;
+}
+
+/* ========== تأثيرات الحركة ========== */
+
+@keyframes fireGlow {
+    from { 
+        text-shadow: 0 0 5px #dc2626, 0 0 10px #ef4444;
+        transform: translate(-50%, -50%) scale(1); 
     }
+    to { 
+        text-shadow: 0 0 20px #dc2626, 0 0 40px #ef4444;
+        transform: translate(-50%, -50%) scale(1.2); 
+    }
+}
+
+@keyframes boltFlash {
+    0%, 100% { 
+        text-shadow: 0 0 10px #10b981, 0 0 20px #34d399;
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% { 
+        text-shadow: 0 0 30px #10b981, 0 0 60px #34d399;
+        opacity: 0.7;
+        transform: translate(-50%, -50%) scale(1.3);
+    }
+}
+
+@keyframes starSpin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes starTwinkle {
+    0%, 100% { 
+        text-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% { 
+        text-shadow: 0 0 25px currentColor, 0 0 50px currentColor;
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+@keyframes diamondShine {
+    0%, 100% { 
+        text-shadow: 0 0 10px #3b82f6, 0 0 20px #93c5fd;
+        filter: brightness(1);
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% { 
+        text-shadow: 0 0 30px #3b82f6, 0 0 60px #bfdbfe;
+        filter: brightness(1.5);
+        transform: translate(-50%, -50%) scale(1.15);
+    }
+}
+
+/* ========== إخفاء أي نصوص إضافية ========== */
+.trend-badge::after {
+    display: none !important;
+}
+  
+    /* ========== تنسيق التبويبين ========== */
+.publish-tab {
+    position: relative;
+    overflow: hidden;
+}
+
+.publish-tab::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(251, 191, 36, 0.3), transparent);
+    transform: rotate(45deg);
+    animation: lightMove 3s infinite;
+    opacity: 0;
+}
+    /* ========== إطار الصورة (نفس الأثرياء) ========== */
+.avatar-frame-wrapper {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* الإطار الافتراضي GIF */
+.avatar-ring {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    background-image: url('https://iili.io/BrLrf6v.gif');
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* الإطار المخصص من المتجر - يحل محل الـ GIF */
+.avatar-ring.custom-ring {
+    background-image: none !important;
+}
+
+.avatar-ring.custom-ring img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* الصورة الشخصية فوق الإطار */
+.avatar-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 2;
+    position: relative;
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+.publish-tab.active::before {
+    opacity: 1;
+}
+
+.publish-tab i {
+    margin-left: 5px;
+}
+
+/* تحسين مظهر المعاينة */
+#mediaPreview {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#reelsSection {
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; max-height: 0; }
+    to { opacity: 1; max-height: 500px; }
+}
+    /* ========== صورة المنشور مع الإطار ========== */
+.post-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    flex-shrink: 0;
+    overflow: visible !important;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+.post-avatar-ring {
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    width: calc(100% + 12px);
+    height: calc(100% + 12px);
+    background: linear-gradient(90deg, rgb(255,250,250), #D8F0D8, rgb(255,250,250)) repeat-x;
+animation: moveLight 18s infinite linear;
+    ackground-image: url('https://iili.io/B4vAkRj.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+    @keyframes moveLight { 0% { background-position: -200px 0; } 100% { background-position: 200px 0; } }
+.post-avatar-ring.custom-ring {
+    background-image: none !important;
+}
+
+.post-avatar-ring.custom-ring img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.post-avatar-inner {
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 2;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+}
+
+.post-avatar-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+    /* ========== وضع الظلام - شامل ========== */
+body.dark-mode {
+    background: linear-gradient(145deg, #0f172a, #1e293b) !important;
+    background-attachment: fixed !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .post-card {
+    background: linear-gradient(145deg, #1e293b, #334155) !important;
+    border: none !important;
+    box-shadow: inset 2px 2px 5px #475569, inset -2px -2px 5px #0f172a, 3px 3px 8px rgba(0,0,0,0.5), -1px -1px 4px rgba(255,255,255,0.05) !important;
+    color: #f1f5f9 !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6), -1px -1px 2px rgba(255,255,255,0.05) !important;
+}
+
+body.dark-mode .compact-header {
+    background: rgba(15, 23, 42, 0.97) !important;
+    backdrop-filter: blur(25px) !important;
+    -webkit-backdrop-filter: blur(25px) !important;
+    border-bottom: 1px solid rgba(251, 191, 36, 0.3) !important;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark-mode .compact-footer {
+    background: rgba(15, 23, 42, 0.95) !important;
+    backdrop-filter: blur(25px) !important;
+    -webkit-backdrop-filter: blur(25px) !important;
+    border-top: 1px solid rgba(251, 191, 36, 0.3) !important;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark-mode .footer-icon {
+    background: linear-gradient(145deg, #1e293b, #334155) !important;
+    border: none !important;
+    box-shadow: inset 2px 2px 5px #475569, inset -2px -2px 5px #0f172a, 3px 3px 8px rgba(0,0,0,0.5), -1px -1px 4px rgba(255,255,255,0.05) !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .footer-icon span {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .resource-item {
+    background: linear-gradient(145deg, #1e293b, #334155) !important;
+    border: none !important;
+    box-shadow: inset 2px 2px 5px #475569, inset -2px -2px 5px #0f172a, 3px 3px 8px rgba(0,0,0,0.3) !important;
+}
+
+body.dark-mode .resource-value {
+    color: #fbbf24 !important;
+    text-shadow: 0 0 10px rgba(251,191,36,0.3) !important;
+}
+
+body.dark-mode .resource-label {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .mini-search-wrapper {
+    background: linear-gradient(145deg, #1e293b, #334155) !important;
+    border: none !important;
+    box-shadow: inset 2px 2px 5px #475569, inset -2px -2px 5px #0f172a, 3px 3px 8px rgba(0,0,0,0.5), -1px -1px 4px rgba(255,255,255,0.05) !important;
+}
+
+body.dark-mode .mini-search-wrapper input {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .mini-search-wrapper input::placeholder {
+    color: #64748b !important;
+}
+
+body.dark-mode .mini-search-wrapper i {
+    color: #64748b !important;
+    text-shadow: none !important;
+}
+
+body.dark-mode .mini-search-wrapper button {
+    background: linear-gradient(145deg, #334155, #475569) !important;
+    color: #fbbf24 !important;
+    box-shadow: inset 1px 1px 3px #64748b, inset -1px -1px 3px #0f172a, 2px 2px 5px rgba(0,0,0,0.3) !important;
+}
+
+body.dark-mode .post-username {
+    color: #f1f5f9 !important;
+}
+
+body.dark-mode .post-content {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .post-time {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .post-interactions {
+    border-top: 1px solid #475569 !important;
+}
+
+body.dark-mode .interact-btn {
+    background: linear-gradient(145deg, #1e293b, #334155) !important;
+    border: none !important;
+    box-shadow: inset 1px 1px 3px #475569, inset -1px -1px 3px #0f172a, 2px 2px 5px rgba(0,0,0,0.3) !important;
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .interact-btn.liked {
+    background: linear-gradient(145deg, #4a1a2e, #5c2333) !important;
+    color: #fda4af !important;
+}
+
+body.dark-mode .modal-sheet {
+    background: linear-gradient(145deg, #1e293b, #334155) !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .modal-header {
+    border-bottom: 1px solid #475569 !important;
+}
+
+body.dark-mode .modal-header h3 {
+    color: #fbbf24 !important;
+}
+
+body.dark-mode .close-btn {
+    background: linear-gradient(145deg, #334155, #475569) !important;
+    border: none !important;
+    box-shadow: inset 1px 1px 3px #64748b, inset -1px -1px 3px #0f172a, 2px 2px 5px rgba(0,0,0,0.3) !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .comment-item {
+    background: linear-gradient(145deg, #1e293b, #334155) !important;
+    border: none !important;
+    box-shadow: inset 1px 1px 3px #475569, inset -1px -1px 3px #0f172a, 2px 2px 5px rgba(0,0,0,0.3) !important;
+}
+
+body.dark-mode .comment-author {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .comment-text {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode .comment-time {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .publish-textarea {
+    background: #0f172a !important;
+    border: 2px solid #475569 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .publish-textarea:focus {
+    border-color: #fbbf24 !important;
+    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2) !important;
+}
+
+body.dark-mode .publish-tabs {
+    background: #1e293b !important;
+}
+
+body.dark-mode .publish-tab {
+    background: transparent !important;
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .publish-tab.active {
+    background: #fbbf24 !important;
+    color: #0f172a !important;
+}
+
+body.dark-mode .color-row {
+    background: linear-gradient(145deg, #1e293b, #334155) !important;
+}
+
+body.dark-mode .color-row label {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .color-row input[type="color"] {
+    border-color: #475569 !important;
+}
+
+body.dark-mode .user-id-section {
+    background: linear-gradient(135deg, #1a1a2e, #16213e) !important;
+    color: #fbbf24 !important;
+}
+
+body.dark-mode .user-id-section label {
+    color: #fbbf24 !important;
+}
+
+body.dark-mode .btn-save {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b) !important;
+    color: #0f172a !important;
+}
+
+body.dark-mode .btn-danger {
+    background: linear-gradient(135deg, #dc2626, #991b1b) !important;
+    color: #f1f5f9 !important;
+}
+
+body.dark-mode .password-section {
+    background: linear-gradient(145deg, #2a1a1a, #3b2020) !important;
+}
+
+body.dark-mode .password-section h4 {
+    color: #fca5a5 !important;
+}
+
+body.dark-mode .password-input {
+    background: #0f172a !important;
+    border: 2px solid #475569 !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .password-input::placeholder {
+    color: #64748b !important;
+}
+
+body.dark-mode .followers-stats {
+    background: linear-gradient(145deg, #1e293b, #334155) !important;
+}
+
+body.dark-mode .stat-item:hover {
+    background: #475569 !important;
+}
+
+body.dark-mode .stat-number {
+    color: #fbbf24 !important;
+}
+
+body.dark-mode .stat-label {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .follower-item {
+    background: linear-gradient(145deg, #1e293b, #334155) !important;
+}
+
+body.dark-mode .account-avatar-circle {
+    background: linear-gradient(135deg, #1e293b, #334155) !important;
+}
+
+body.dark-mode .account-label {
+    color: #cbd5e1 !important;
+}
+
+body.dark-mode #toastMsg {
+    background: #fbbf24 !important;
+    color: #0f172a !important;
+}
+
+body.dark-mode .publish-form {
+    background: linear-gradient(145deg, #1e293b, #334155) !important;
+}
+
+body.dark-mode .stories-row {
+    background: rgba(30, 41, 59, 0.5) !important;
+}
+
+body.dark-mode .story-name {
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .post-menu i {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .post-menu i:hover {
+    background: #475569 !important;
+    color: #fca5a5 !important;
+}
+
+body.dark-mode .relationship-status {
+    background: #1e293b !important;
+    color: #e2e8f0 !important;
+}
+
+body.dark-mode .trend-badge {
+    background: transparent !important;
+}
+
+/* إخفاء أيقونة التبديل في الوضع المظلم */
+.theme-toggle-icon {
+    position: fixed;
+    bottom: 11px;
+    right: 280px;
+    width: 6px;
+    height: 7px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #f8fafc, #e2e8f0);
+    border: none !important;
+    box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.2), -1px -1px 4px rgba(255,255,255,0.6) !important;
+    z-index: 999;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    color: #1e293b;
+}
+    /* إخفاء الموارد في الهيدر العلوي */
+.resources-row { display: none !important; }
+
+body.dark-mode .theme-toggle-icon {
+    background: linear-gradient(145deg, #fbbf24, #f59e0b) !important;
+    box-shadow: inset 2px 2px 5px #fef3c7, inset -2px -2px 5px #b45309, 0 0 20px rgba(251, 191, 36, 0.4) !important;
+    color: #0f172a;
+}
   </style>
 </head>
 <body>
@@ -1193,6 +1955,9 @@ body {
       <span class="resource-icon"><i class="fas fa-coins"></i></span>
       <div><span class="resource-value" id="goldAmount">0</span><span class="resource-label">D</span></div>
     </div>
+       
+    
+        <!-- زر تبديل الوضع المظلم -->
     <div class="resource-item elixir">
       <span class="resource-icon"><i class="fas fa-flask"></i></span>
       <div><span class="resource-value" id="elixirAmount">0</span><span class="resource-label">X</span></div>
@@ -1209,28 +1974,21 @@ body {
 <div class="search-row">
     <div class="mini-search-wrapper">
         <i class="fas fa-search"></i>
+        
         <input type="text" id="searchInput" placeholder="ابحث..." autocomplete="off">
         <!-- أيقونة الجرس بدل X -->
-      <!-- أيقونة نشر منشور -->
-<button onclick="window.openModal('publishModal')" style="background: transparent; border: none; color: #fbbf24; padding: 7px 12px; cursor: pointer; font-size: 14px;">
-    <i class="fas fa-feather-alt"></i>
+        
+        <button class="theme-toggle-icon" id="themeToggleBtn" onclick="toggleTheme()" title="تبديل الوضع المظلم">
+    <i class="fas fa-moon" id="themeIcon"></i>
 </button>
-      
-
+        <button onclick="window.location.href='https://amanhsn55555-eng.github.io/Tnbehtodyyy/'" style="background: transparent; border: none; color: #fbbf24; padding: 7px 12px; cursor: pointer; font-size: 14px;">
+            <i class="fas fa-bell" style="animation: bellRing 2s infinite;"></i>
+        </button>
     </div>
 </div>
-  <!-- ========== مربع النشر السريع الجديد ========== -->
-  <div class="quick-publish-wrapper">
-      <i class="fas fa-pn"></i>
-      <input type="text" id="quickPublishInput" placeholder="اكتب منشورك هنا💠 ..." autocomplete="off">
-      <button onclick="window.quickPublish()">
-          <i class="fas fa-paper-plane"></i> نشر
-      </button>
-  </div>
-</div>
+    
 </div>
 
-  
 <main class="app-container">
     <!-- صف الستوريات الأفقي -->
     <div id="storiesContainer" class="stories-row"></div>
@@ -1239,45 +1997,83 @@ body {
     </div>
 </main>
 
+    
 <footer class="compact-footer">
-  <div class="footer-icon messenger-icon-wrapper" onclick="window.open('https://amanhsn55555-eng.github.io/Msgtdy/', '_blank')">
-    <i class="fab fa-facebook-messenger"></i>
-    <span>ماسنجر</span>
-    <span class="unread-badge-messenger" id="unreadMessageBadge" style="display: none;">0</span>
-  </div>
-  
-  <div class="account-icon-wrapper" id="accountBtn">
-    <div class="account-avatar-circle" id="accountAvatarCircle" style="border-color: #fbbf24;">
-      <span>👤</span>
+    <div class="quick-publish-footer" style="flex: 1; max-width: 250px; margin: 0 10px;">
+    <div style="display: flex; align-items: center; background: linear-gradient(145deg, #f8fafc, #e2e8f0); border-radius: 30px; padding: 3px; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1);">
+      <input type="text" id="footerPublishInput" placeholder="نشر سريع..." style="flex: 1; border: none; background: transparent; padding: 8px 10px; font-size: 11px; outline: none; text-align: right; direction: rtl;">
+      <button onclick="window.quickPublishFromFooter()" style="background: linear-gradient(135deg, #fbbf24, #f59e0b); border: none; color: #0f172a; padding: 8px 12px; border-radius: 30px; font-size: 11px; font-weight: 700; cursor: pointer; white-space: nowrap;">
+        <i class="fas fa-paper-plane"></i>
+      </button>
     </div>
-    <span class="account-label">حسابي</span>
   </div>
   
-  <div class="publish-oil-btn" id="mainPublishBtn"><i class="fas fa-tint"></i></div>
   
-  <div class="footer-icon" onclick="window.open('https://amanhsn55555-eng.github.io/Grftodyyy/', '_blank')">
-    <i class="fas fa-gamepad"></i>
-    <span>ألعاب</span>
-  </div>
-  
-  <div class="footer-icon" onclick="window.openMenuModal()">
-    <i class="fas fa-bars"></i>
-    <span>القائمة</span>
-  </div>
 </footer>
 
 <!-- نافذة النشر -->
 
+    <!-- نافذة النشر -->
+<div class="modal-overlay" id="publishModal">
+  <div class="modal-sheet">
+    <div class="modal-header">
+        
+      <button class="close-btn" onclick="window.closeModal('publishModal')">&times;</button>
+    </div>
+    
+    <!-- التبويبين -->
+    <div class="publish-tabs" style="display: flex; gap: 10px; margin-bottom: 20px; background: #f1f5f9; border-radius: 40px; padding: 5px;">
+      <button id="tabBlog" class="publish-tab active" onclick="window.switchPublishTab('blog')" style="flex: 1; padding: 12px; border-radius: 40px; border: none; font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.3s; background: #fbbf24; color: #0f172a;">
+        <i class="fas fa-blog"></i> مدونة
+      </button>
+      <button id="tabReels" class="publish-tab active" onclick="window.switchPublishTab('reels')" style="flex: 1; padding: 12px; border-radius: 40px; border: none; font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.3s; background: transparent; color: #64748b;">
+        <i class="fas fa-video"></i> ريلز
+      </button>
+    </div>
+    
+    <div class="publish-form">
+      <!-- حقل النص المشترك -->
+      <textarea id="postText" class="publish-textarea" placeholder="اكتب منشورك هنا..." rows="4"></textarea>
+      
+      <!-- قسم الريلز (يظهر فقط عند اختيار ريلز) -->
+      <div id="reelsSection" style="display: none;">
+        <div style="margin:15px 0;">
+          <label style="font-weight:600; display:block; margin-bottom:8px; color: #475569;">
+            <i class="fas fa-link"></i>
+          </label>
+          <input type="text" id="postMediaUrl" placeholder=📸 style="width:100%; padding:14px; border-radius:30px; border:2px solid #e2e8f0; font-size:14px;">
+        </div>
+        
+        <!-- معاينة سريعة للرابط -->
+        <div id="mediaPreview" style="display: none; margin: 15px 0; text-align: center; background: #f8fafc; border-radius: 20px; padding: 15px; border: 1px dashed #cbd5e1;">
+          <p style="color: #94a3b8; font-size: 12px;">👀 معاينة الوسائط</p>
+          <div id="mediaPreviewContent"></div>
+        </div>
+      </div>
+      
+      <!-- الترويج -->
+      
+      <!-- العداد والزر -->
+      <div style="display:flex; justify-content:space-between; align-items: center;">
+        <span id="charCounter" style="color: #64748b; font-size: 13px;">0/500</span>
+        <button class="publish-tab active" style="width:auto; padding:14px 30px;margin-top: 8px; background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px !important; padding: 2px 2px 2px 10px !important; display: flex; align-items: center;" onclick="window.publishPost()">
+          <i class="publish-tab active"></i> نشر
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- نافذة التعليقات -->
 <div class="modal-overlay" id="commentsModal">
   <div class="modal-sheet">
     <div class="modal-header">
-      <h3><i class="fas fa-comments" style="color: #fbbf24; margin-left: 8px;"></i> 💬 التعليقات</h3>
+      <h3><i class="fas fa-comments" style="color: #fbbf24; margin-left: 8px;margin-top: 8px; background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px !important; padding: 2px 2px 2px 10px !important; display: flex; align-items: center;"></i></h3>
       <button class="close-btn" onclick="window.closeModal('commentsModal')">&times;</button>
     </div>
-    <div id="commentsListContainer" style="max-height:60vh; overflow-y:auto;"></div>
-    <div style="display:flex; gap:10px; margin-top:20px;">
+    <div id="commentsListContainer" style="max-height:60vh; overflow-y:auto; "></div>
+    <div style="display:flex; gap:10px; margin-top:20px; margin-top: 8px; background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px !important; padding: 2px 2px 2px 10px !important; display: flex; align-items: center;">
       <input id="newCommentInput" placeholder="أضف تعليقاً..." style="flex:1; padding:14px; border-radius:30px; border:2px solid #e2e8f0;">
-      <button onclick="window.submitComment()" style="background:#1e293b; color:white; border:none; width:50px; border-radius:30px; font-size:16px; cursor:pointer;">
+      <button onclick="window.submitComment()" style="background:#1e293b; margin-top: 8px; background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px !important; padding: 2px 2px 2px 10px !important; display: flex; align-items: center; color:white; border:none; width:50px; border-radius:30px; font-size:16px; cursor:pointer;">
         <i class="fas fa-arrow-left"></i>
       </button>
     </div>
@@ -1288,7 +2084,7 @@ body {
 <div class="modal-overlay" id="accountModal">
   <div class="modal-sheet">
     <div class="modal-header">
-      <h3><i class="fas fa-user-cog" style="color: #fbbf24; margin-left: 8px;"></i> إعدادات الحساب</h3>
+      <h3><i class="fas fa-user-cog" style="color: #fbbf24; margin-left: 8px; margin-top: 8px; background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px !important; padding: 2px 2px 2px 10px !important; display: flex; align-items: center;"></i> </h3>
       <button class="close-btn" onclick="window.closeModal('accountModal')">&times;</button>
     </div>
     <div id="accountEditForm"></div>
@@ -1301,7 +2097,7 @@ body {
   <div class="modal-sheet" style="background: #000000 !important; color: #ffffff !important; max-width: 600px; border-radius: 20px 20px 0 0;">
     <div class="modal-header" style="border-bottom: 1px solid #333; padding: 15px;">
       <h3 style="color: #ffffff !important; display: flex; align-items: center; gap: 8px;">
-        <i class="fas fa-user" style="color: #fbbf24;"></i> 
+        <i class="fas fa-user" style="color: #fbbf24; margin-top: 8px; background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px !important; padding: 2px 2px 2px 10px !important; display: flex; align-items: center;"></i> 
         <span id="profileModalUsername">الملف الشخصي</span>
       </h3>
       <div style="display: flex; gap: 10px;">
@@ -1346,48 +2142,86 @@ body {
 <div class="modal-overlay" id="menuModal">
   <div class="modal-sheet">
     <div class="modal-header">
-      <h3><i class="fas fa-bars" style="color: #fbbf24; margin-left: 8px;"></i> القائمة الرئيسية</h3>
+      <h3><i class="fas fa-bars" style="color: #fbbf24;  margin-left: 8px; margin-top: 8px; background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px !important; padding: 2px 2px 2px 10px !important; display: flex; align-items: center;"></i></h3>
       <button class="close-btn" onclick="window.closeModal('menuModal')">&times;</button>
     </div>
     
-    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 20px 10px;">
+    <div style="display: grid; background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 20px 10px;">
       
-      <div onclick="window.location.href='https://amanhsn55555-eng.github.io/Berrrrtdy/'" style="text-align: center; cursor: pointer; padding: 20px; background: linear-gradient(145deg, #ffffff, #f8fafc); border-radius: 20px; border: 1px solid rgba(251, 191, 36, 0.15); position: relative; overflow: hidden; transition: all 0.3s;">
+     <div onclick="window.location.href='https://amanhsn55555-eng.github.io/Athreaa-man-chat/'" style="text-align: center;  cursor: pointer; padding: 20px; background: linear-gradient(145deg, #ffffff, #f8fafc); border-radius: 20px; border: 1px solid rgba(251, 191, 36, 0.15); position: relative; overflow: hidden; transition: all 0.3s;">
+    <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.2), transparent); transform: rotate(45deg); animation: lightMove 4s infinite;"></div>
+    <i class="fas fa-crown" style="font-size: 40px; color: #FFD700; position: relative; z-index: 1; text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);"></i>
+    <p style="font-weight: 800; margin: 10px 0 0; color: #B8860B; position: relative; z-index: 1; margin-top: 8px; background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px !important; padding: 2px 2px 2px 10px !important; display: flex; align-items: center;"> الاثرياء</p>
+</div>
+      <div onclick="window.location.href='https://amanhsn55555-eng.github.io/Berrrrtdy/'" style="text-align: center; margin-top: 8px; background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px !important; padding: 2px 2px 2px 10px !important; display: flex; align-items: center; cursor: pointer; padding: 20px; background: linear-gradient(145deg, #ffffff, #f8fafc); border-radius: 20px; border: 1px solid rgba(251, 191, 36, 0.15); position: relative; overflow: hidden; transition: all 0.3s;">
         <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(13, 148, 136, 0.2), transparent); transform: rotate(45deg); animation: lightMove 4s infinite;"></div>
         <i class="fas fa-oil-can" style="font-size: 40px; color: #0d9488; position: relative; z-index: 1;"></i>
         <p style="font-weight: 800; margin: 10px 0 0; color: #115e59; position: relative; z-index: 1;">🛢️ بئر النفط</p>
       </div>
       
-      <div onclick="window.location.href='https://amanhsn55555-eng.github.io/Markiottody/'" style="text-align: center; cursor: pointer; padding: 20px; background: linear-gradient(145deg, #ffffff, #f8fafc); border-radius: 20px; border: 1px solid rgba(251, 191, 36, 0.15); position: relative; overflow: hidden; transition: all 0.3s;">
+        
+      <div onclick="window.location.href='https://amanhsn55555-eng.github.io/Markiottody/'" style="text-align: center; margin-top: 8px; background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px !important; padding: 2px 2px 2px 10px !important; display: flex; align-items: center; cursor: pointer; padding: 20px; background: linear-gradient(145deg, #ffffff, #f8fafc); border-radius: 20px; border: 1px solid rgba(251, 191, 36, 0.15); position: relative; overflow: hidden; transition: all 0.3s;">
         <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(220, 38, 38, 0.2), transparent); transform: rotate(45deg); animation: lightMove 3.5s infinite;"></div>
         <i class="fas fa-store" style="font-size: 40px; color: #dc2626; position: relative; z-index: 1;"></i>
-        <p style="font-weight: 800; margin: 10px 0 0; color: #7f1d1d; position: relative; z-index: 1;">🛒 المتجر</p>
+        <p style="font-weight: 800; margin: 10px 0 0; color: #7f1d1d; position: relative; z-index: 1;"> المتجر</p>
       </div>
       
-      <div onclick="window.location.href='https://amanhsn55555-eng.github.io/Grftodyyy/'" style="text-align: center; cursor: pointer; padding: 20px; background: linear-gradient(145deg, #ffffff, #f8fafc); border-radius: 20px; border: 1px solid rgba(251, 191, 36, 0.15); position: relative; overflow: hidden; transition: all 0.3s;">
+      <div onclick="window.location.href='https://amanhsn55555-eng.github.io/Grftodyyy/'" style="text-align: center; margin-top: 8px; background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px !important; padding: 2px 2px 2px 10px !important; display: flex; align-items: center; cursor: pointer; padding: 20px; background: linear-gradient(145deg, #ffffff, #f8fafc); border-radius: 20px; border: 1px solid rgba(251, 191, 36, 0.15); position: relative; overflow: hidden; transition: all 0.3s;">
         <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(139, 92, 246, 0.2), transparent); transform: rotate(45deg); animation: lightMove 5s infinite;"></div>
         <i class="fas fa-users" style="font-size: 40px; color: #8b5cf6; position: relative; z-index: 1;"></i>
-        <p style="font-weight: 800; margin: 10px 0 0; color: #4c1d95; position: relative; z-index: 1;">🏠 الغرف</p>
+        <p style="font-weight: 800; margin: 10px 0 0; color: #4c1d95; position: relative; z-index: 1;"> الغرف</p>
       </div>
       
-      <div onclick="window.location.href='https://amanhsn55555-eng.github.io/Mshroatody/'" style="text-align: center; cursor: pointer; padding: 20px; background: linear-gradient(145deg, #ffffff, #f8fafc); border-radius: 20px; border: 1px solid rgba(251, 191, 36, 0.15); position: relative; overflow: hidden; transition: all 0.3s;">
+      <div onclick="window.location.href='https://amanhsn55555-eng.github.io/Mshroatody/'" style="text-align: center; margin-top: 8px; background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px !important; padding: 2px 2px 2px 10px !important; display: flex; align-items: center; cursor: pointer; padding: 20px; background: linear-gradient(145deg, #ffffff, #f8fafc); border-radius: 20px; border: 1px solid rgba(251, 191, 36, 0.15); position: relative; overflow: hidden; transition: all 0.3s;">
         <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.2), transparent); transform: rotate(45deg); animation: lightMove 4.5s infinite;"></div>
         <i class="fas fa-layer-group" style="font-size: 40px; color: #3b82f6; position: relative; z-index: 1;"></i>
         <p style="font-weight: 800; margin: 10px 0 0; color: #1e3a8a; position: relative; z-index: 1;">المشاريع</p>
       </div>
       
-      <div onclick="window.location.href='https://amanhsn55555-eng.github.io/Hafdhtidy/'" style="text-align: center; cursor: pointer; padding: 20px; background: linear-gradient(145deg, #ffffff, #f8fafc); border-radius: 20px; border: 1px solid rgba(251, 191, 36, 0.15); position: relative; overflow: hidden; transition: all 0.3s;">
+      <div onclick="window.location.href='https://amanhsn55555-eng.github.io/Hafdhtidy/'" style="text-align: center; margin-top: 8px; background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px !important; padding: 2px 2px 2px 10px !important; display: flex; align-items: center; cursor: pointer; padding: 20px; background: linear-gradient(145deg, #ffffff, #f8fafc); border-radius: 20px; border: 1px solid rgba(251, 191, 36, 0.15); position: relative; overflow: hidden; transition: all 0.3s;">
         <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(22, 163, 74, 0.2), transparent); transform: rotate(45deg); animation: lightMove 3.8s infinite;"></div>
         <i class="fas fa-wallet" style="font-size: 40px; color: #16a34a; position: relative; z-index: 1;"></i>
-        <p style="font-weight: 800; margin: 10px 0 0; color: #14532e; position: relative; z-index: 1;">💰 المحفظة</p>
+        <p style="font-weight: 800; margin: 10px 0 0; color: #14532e; position: relative; z-index: 1;"> المحفظة</p>
       </div>
       
-      <div onclick="window.location.href='https://amanhsn55555-eng.github.io/Logtody/'" style="text-align: center; cursor: pointer; padding: 20px; background: linear-gradient(145deg, #ffffff, #f8fafc); border-radius: 20px; border: 1px solid rgba(251, 191, 36, 0.15); position: relative; overflow: hidden; transition: all 0.3s;">
+      <div onclick="window.location.href='https://amanhsn55555-eng.github.io/Logtody/'" style="text-align: center; margin-top: 8px; background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px !important; padding: 2px 2px 2px 10px !important; display: flex; align-items: center; cursor: pointer; padding: 20px; background: linear-gradient(145deg, #ffffff, #f8fafc); border-radius: 20px; border: 1px solid rgba(251, 191, 36, 0.15); position: relative; overflow: hidden; transition: all 0.3s;">
         <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(245, 158, 11, 0.2), transparent); transform: rotate(45deg); animation: lightMove 4.2s infinite;"></div>
         <i class="fas fa-user-plus" style="font-size: 40px; color: #f59e0b; position: relative; z-index: 1;"></i>
-        <p style="font-weight: 800; margin: 10px 0 0; color: #92400e; position: relative; z-index: 1;">📝 تسجيل</p>
+        <p style="font-weight: 800; margin: 10px 0 0; color: #92400e; position: relative; z-index: 1;"> تسجيل</p>
       </div>
       
+
+      <div onclick="window.location.href'" style="text-align: center; margin-top: 8px; background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px !important; padding: 2px 2px 2px 10px !important; display: flex; align-items: center; cursor: pointer; padding: 20px; background: linear-gradient(145deg, #ffffff, #f8fafc); border-radius: 20px; border: 1px solid rgba(251, 191, 36, 0.15); position: relative; overflow: hidden; transition: all 0.3s;">
+    <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(239, 68, 68, 0.2), transparent); transform: rotate(45deg); animation: lightMove 4.5s infinite;"></div>
+    <i class="fas fa-flag" style="font-size: 40px; color: #ef4444; position: relative; z-index: 1;"></i>
+    <p style="font-weight: 800; margin: 10px 0 0; color: #991b1b; position: relative; z-index: 1;"> عراق هاك</p>
+</div>  
+<!-- الدعم الفني -->
+        
+  <div onclick="window.location.href=' https://amanhsn55555-eng.github.io/Mqalat-tody/'" style="text-align: center;background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px margin-top: 8px; background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px !important; padding: 2px 2px 2px 10px !important; display: flex; align-items: center; cursor: pointer; padding: 20px; background: linear-gradient(145deg, #ffffff, #f8fafc); border-radius: 20px; border: 1px solid rgba(251, 191, 36, 0.15); position: relative; overflow: hidden; transition: all 0.3s;">
+    <div style="position: absolute; top: -50%; background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(99, 102, 241, 0.2), transparent); transform: rotate(45deg); animation: lightMove 4s infinite;"></div>
+    <i class="fas fa-newspaper" style="font-size: 40px; color: #6366f1; position: relative; z-index: 1;"></i>
+    <p style="font-weight: 800; margin: 10px 0 0; color: #3730a3; background: linear-gradient(145deg, #f8fafc, #e2e8f0) !important; border: none !important; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #94a3b8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6) !important; border-radius: 30px position: relative; z-index: 1;"> المجلة</p>
+</div>      
+<div onclick="window.location.href=' https://amanhsn55555-eng.github.io/Daam-fany-tody/'" style="text-align: center; margin-top: 8px; background: linear-gradient(145deg, #f8fafc, #7dd3fc); border: none; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #38bdf8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6); border-radius: 30px; padding: 20px; display: flex; align-items: center; cursor: pointer; position: relative; overflow: hidden; transition: all 0.3s;">
+    <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.2), transparent); transform: rotate(45deg); animation: lightMove 4s infinite;"></div>
+    <i class="fas fa-headset" style="font-size: 40px; color: #3b82f6; position: relative; z-index: 1;"></i>
+    <p style="font-weight: 800; margin: 10px 0 0; color: #1e3a8a; position: relative; z-index: 1;"> الدعم الفني</p>
+</div>
+
+<!-- سياسة الخصوصية -->
+<div onclick="window.location.href='https://amanhsn55555-eng.github.io/Seasat-tody/'" style="text-align: center; margin-top: 8px; background: linear-gradient(145deg, #f8fafc, #7dd3fc); border: none; box-shadow: inset 2px 2px 5px #ffffff, inset -2px -2px 5px #38bdf8, 3px 3px 8px rgba(0,0,0,0.1), -1px -1px 4px rgba(255,255,255,0.6); border-radius: 30px; padding: 20px; display: flex; align-items: center; cursor: pointer; position: relative; overflow: hidden; transition: all 0.3s;">
+    <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(147, 51, 234, 0.2), transparent); transform: rotate(45deg); animation: lightMove 4s infinite;"></div>
+    <i class="fas fa-shield-haltered" style="font-size: 40px; color: #9333ea; position: relative; z-index: 1;"></i>
+    <p style="font-weight: 800; margin: 10px 0 0; color: #581c87; position: relative; z-index: 1;">todyسياسة</p>
+</div>
+
+<!-- توقيع عقد -->
+
+<!-- من نحن -->
+
+        
+        
     </div>
   </div>
 </div>
@@ -1489,6 +2323,7 @@ body {
 </div>
 
 <!-- نافذة البلاغات (للإدارة) -->
+    
 <div class="modal-overlay" id="reportsModal">
   <div class="modal-sheet">
     <div class="modal-header">
@@ -1498,17 +2333,18 @@ body {
     <div id="reportsListContainer"></div>
   </div>
 </div>
+<!-- زر تبديل الوضع المظلم -->
 
 <div id="toastMsg"></div>
 
   
+    
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
   import { getAuth, signOut, onAuthStateChanged, updatePassword, EmailAuthProvider, reauthenticateWithCredential } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
   import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, query, getDocs, addDoc, deleteDoc, onSnapshot, arrayUnion, arrayRemove, increment, serverTimestamp, where, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
 
-  
-const firebaseConfig = {
+  const firebaseConfig = {
   apiKey: "AIzaSyCPBrZMo6IYCwCDYV3HEfNcUmLUITR6VRc",
   authDomain: "elahbes.firebaseapp.com",
   projectId: "elahbes",
@@ -1517,12 +2353,37 @@ const firebaseConfig = {
   appId: "1:800207969145:web:aa19b725d1c92dd48fada8",
   measurementId: "G-EFT566SJMP"
 };
+
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
 
+    
   let currentUser = null;
   let currentUserData = null;
+    // ========== نظام الإعدادات المركزية ==========
+async function loadAdminSettings() {
+  try {
+    const settingsList = [
+      'allow_posting', 'allow_comments', 'allow_stories', 'allow_create_rooms',
+      'registration_open', 'min_email_len', 'min_pass_len', 'banned_passwords',
+      'default_money', 'default_gold', 'default_elixir', 'default_oil', 'default_ddo',
+      'ddo_exchange_rate'
+    ];
+    
+    for (const key of settingsList) {
+      try {
+        const snap = await getDoc(doc(db, "admin_settings", key));
+        window['ADMIN_' + key] = snap.exists() ? snap.data().value : null;
+      } catch(e) {
+        window['ADMIN_' + key] = null;
+      }
+    }
+    console.log('✅ تم تحميل إعدادات الإدارة');
+  } catch(e) {
+    console.log('⚠️ فشل تحميل إعدادات الإدارة');
+  }
+}
   let resources = { gold: 10, elixir: 10, money: 1000, oil: 100 };
   let posts = [];
   let followers = {};
@@ -1537,7 +2398,7 @@ const firebaseConfig = {
   let unreadMessagesCount = 0;
   let stories = [];
 
-  const emojis = ['😎', '👑', '🦊', '🐼', '🐸', '🐶', '🦁', '🐧', '🐨', '🦝', '🐱', '🐻', '🦄', '🐙', '🦋', '👀', '⭐', '🌙', '☀️', '🔥', '💎', '🎮', '🫦', '💫'];
+  const emojis = ['😎', '👑', '🦊', '🐼', '🐸', '🐶', '🦁', '🐧', '🐨', '🦝', '🐱', '🐻', '🦄', '🐙', '🦋', '⭐', '🫦',];
   
   const imageUrls = [
     'https://i.pravatar.cc/150?img=1', 'https://i.pravatar.cc/150?img=2', 'https://i.pravatar.cc/150?img=3',
@@ -1545,7 +2406,153 @@ const firebaseConfig = {
     'https://i.pravatar.cc/150?img=7', 'https://i.pravatar.cc/150?img=8', 'https://i.pravatar.cc/150?img=9',
     'https://i.pravatar.cc/150?img=10', 'https://i.pravatar.cc/150?img=11', 'https://i.pravatar.cc/150?img=12'
   ];
+    // ========== مركز الإعدادات ==========
+async function loadGlobalSettings() {
+  try {
+    const snap = await getDoc(doc(db, "admin_settings", "allow_posting"));
+    if (snap.exists()) window.GLOBAL_allowPosting = snap.data().value;
+    else window.GLOBAL_allowPosting = true;
+  } catch(e) { window.GLOBAL_allowPosting = true; }
 
+  try {
+    const snap = await getDoc(doc(db, "admin_settings", "allow_comments"));
+    window.GLOBAL_allowComments = snap.exists() ? snap.data().value : true;
+  } catch(e) { window.GLOBAL_allowComments = true; }
+
+  try {
+    const snap = await getDoc(doc(db, "admin_settings", "allow_stories"));
+    window.GLOBAL_allowStories = snap.exists() ? snap.data().value : true;
+  } catch(e) { window.GLOBAL_allowStories = true; }
+
+  try {
+    const snap = await getDoc(doc(db, "admin_settings", "allow_create_rooms"));
+    window.GLOBAL_allowCreateRooms = snap.exists() ? snap.data().value : true;
+  } catch(e) { window.GLOBAL_allowCreateRooms = true; }
+
+  try {
+    const snap = await getDoc(doc(db, "admin_settings", "registration_open"));
+    window.GLOBAL_registrationOpen = snap.exists() ? snap.data().value : true;
+  } catch(e) { window.GLOBAL_registrationOpen = true; }
+
+  // القيود
+  try {
+    const snap = await getDoc(doc(db, "admin_settings", "min_email_len"));
+    window.GLOBAL_minEmailLen = snap.exists() ? snap.data().value : 5;
+  } catch(e) { window.GLOBAL_minEmailLen = 5; }
+
+  try {
+    const snap = await getDoc(doc(db, "admin_settings", "min_pass_len"));
+    window.GLOBAL_minPassLen = snap.exists() ? snap.data().value : 6;
+  } catch(e) { window.GLOBAL_minPassLen = 6; }
+
+  try {
+    const snap = await getDoc(doc(db, "admin_settings", "banned_passwords"));
+    window.GLOBAL_bannedPasswords = snap.exists() ? snap.data().value : [];
+  } catch(e) { window.GLOBAL_bannedPasswords = []; }
+
+  // الموارد الافتراضية
+  try {
+    const snap = await getDoc(doc(db, "admin_settings", "default_money"));
+    window.GLOBAL_defaultMoney = snap.exists() ? snap.data().value : 1000;
+  } catch(e) { window.GLOBAL_defaultMoney = 1000; }
+  try {
+    const snap = await getDoc(doc(db, "admin_settings", "default_gold"));
+    window.GLOBAL_defaultGold = snap.exists() ? snap.data().value : 10;
+  } catch(e) { window.GLOBAL_defaultGold = 10; }
+  try {
+    const snap = await getDoc(doc(db, "admin_settings", "default_elixir"));
+    window.GLOBAL_defaultElixir = snap.exists() ? snap.data().value : 10;
+  } catch(e) { window.GLOBAL_defaultElixir = 10; }
+  try {
+    const snap = await getDoc(doc(db, "admin_settings", "default_oil"));
+    window.GLOBAL_defaultOil = snap.exists() ? snap.data().value : 10;
+  } catch(e) { window.GLOBAL_defaultOil = 10; }
+  try {
+    const snap = await getDoc(doc(db, "admin_settings", "default_ddo"));
+    window.GLOBAL_defaultDdo = snap.exists() ? snap.data().value : 0;
+  } catch(e) { window.GLOBAL_defaultDdo = 0; }
+}
+
+// استدعها عند بداية التطبيق
+    
+loadGlobalSettings();
+
+    
+    // ========== النشر السريع من الفوتر ==========
+window.quickPublishFromFooter = async function() {
+    const input = document.getElementById('footerPublishInput');
+    if (!input) return;
+    
+    const text = input.value.trim();
+    if (!text) {
+        showToast('⚠️ اكتب شيئاً', false);
+        return;
+    }
+    
+    if (!currentUser) {
+        showToast('يجب تسجيل الدخول', false);
+        return;
+    }
+    
+    let content = text;
+    let mediaUrl = null;
+    let mediaType = null;
+    
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    const urls = text.match(urlRegex);
+    
+    if (urls && urls.length > 0) {
+        const firstUrl = urls[0];
+        
+        if (firstUrl.includes('youtube.com') || firstUrl.includes('youtu.be')) {
+            const videoId = firstUrl.split('v=')[1]?.split('&')[0] || firstUrl.split('/').pop();
+            mediaUrl = videoId ? `https://www.youtube.com/embed/${videoId}` : firstUrl;
+            mediaType = 'youtube';
+            content = text.replace(firstUrl, '').trim() || '🎥 فيديو';
+        } else if (firstUrl.match(/\.(jpg|jpeg|png|gif|webp)(\?.*)?$/i)) {
+            mediaUrl = firstUrl;
+            mediaType = 'image';
+            content = text.replace(firstUrl, '').trim() || '📸 صورة';
+        }
+    }
+    
+    const newPost = {
+        userId: currentUserData?.userId || currentUser.uid.slice(0, 6),
+        username: currentUserData?.username || 'مستخدم',
+        emoji: currentUserData?.emoji || '😎',
+        avatarType: currentUserData?.avatarType || 'emoji',
+        avatarUrl: currentUserData?.avatarUrl || '',
+        colors: currentUserData?.colors || {},
+        verified: currentUserData?.verified || false,
+        content: content,
+        mediaUrl: mediaUrl,
+        mediaType: mediaType,
+        postType: mediaType ? 'reels' : 'blog',
+        timestamp: Date.now(),
+        likes: 0, likedBy: [], comments: [], views: 0, shares: 0, reports: [], promotedUntil: 0
+    };
+    
+    try {
+        await addDoc(collection(db, "user_posts"), newPost);
+        input.value = '';
+        showToast('✨ تم النشر');
+    } catch (error) {
+        showToast('❌ فشل النشر', false);
+    }
+};
+
+// دعم Enter
+document.addEventListener('DOMContentLoaded', function() {
+    const footerInput = document.getElementById('footerPublishInput');
+    if (footerInput) {
+        footerInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                window.quickPublishFromFooter();
+            }
+        });
+    }
+});
   function showToast(msg, isSuccess = true) { 
     const t = document.getElementById('toastMsg'); 
     if (!t) return;
@@ -1572,12 +2579,65 @@ const firebaseConfig = {
 
   function renderAvatar(user) {
     if (!user) return '👤';
-    if (user.avatarType === 'image' && user.avatarUrl) {
-      return `<img src="${user.avatarUrl}" style="width:100%;height:100%;border-radius:50%;object-fit:cover;" onerror="this.parentElement.innerHTML='👤'">`;
-    }
-    return user.emoji || '😎';
-  }
+    
+    // اكتشاف الإطار المخصص
+    const customFrame = user?.colors?.frame;
+    const hasCustomFrame = customFrame && 
+                           customFrame !== '#fbbf24' && 
+                           customFrame !== '#0f172a' && 
+                           customFrame.startsWith('http');
+    
+    // محتوى الصورة الشخصية
+    const photoContent = (user.avatarType === 'image' && user.avatarUrl)
+        ? `<img src="${user.avatarUrl}" class="avatar-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">`
+        : '';
+    
+    const emojiContent = (!user.avatarType || user.avatarType !== 'image' || !user.avatarUrl)
+        ? `<span style="position:relative;z-index:2;font-size:24px;">${user.emoji || '😎'}</span>`
+        : '';
+    
+      
+    return `
+        <div class="avatar-frame-wrapper">
+            ${hasCustomFrame 
+                ? `<div class="avatar-ring custom-ring"><img src="${customFrame}" alt="frame"></div>`
+                : `<div class="avatar-ring"></div>`
+            }
+            ${photoContent}
+            ${emojiContent}
+        </div>
+    `;
+}
 
+    // دالة عرض الصورة مع الإطار (للمنشورات والتعليقات)
+function renderAvatarWithFrame(user) {
+    if (!user) return '<span style="font-size:20px;">👤</span>';
+    
+    const customFrame = user?.colors?.frame;
+    const hasCustomFrame = customFrame && 
+                           customFrame !== '#fbbf24' && 
+                           customFrame !== '#0f172a' && 
+                           customFrame.startsWith('http');
+    
+    const photoHtml = (user.avatarType === 'image' && user.avatarUrl)
+        ? `<img src="${user.avatarUrl}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">`
+        : '';
+    
+    const emojiHtml = (!user.avatarType || user.avatarType !== 'image' || !user.avatarUrl)
+        ? user.emoji || '😎'
+        : '';
+    
+    return `
+        ${hasCustomFrame 
+            ? `<div class="post-avatar-ring custom-ring"><img src="${customFrame}"></div>`
+            : `<div class="post-avatar-ring"></div>`
+        }
+        <div class="post-avatar-inner">
+            ${photoHtml}
+            <span style="display:${photoHtml ? 'none' : 'flex'};align-items:center;justify-content:center;width:100%;height:100%;font-size:20px;">${emojiHtml}</span>
+        </div>
+    `;
+}
   function updateAccountIcon() {
     const avatarCircle = document.getElementById('accountAvatarCircle');
     if (!avatarCircle) return;
@@ -1627,7 +2687,7 @@ const firebaseConfig = {
         followers = followersDoc.data();
       }
       
-      const viewedDoc = await getDoc(doc(db, "viewed_posts", uid));
+      const viewedDoc = await getDoc(doc(db, "viewed_user_posts", uid));
       if (viewedDoc.exists()) {
         viewedPosts = new Set(viewedDoc.data().posts || []);
       }
@@ -1635,90 +2695,114 @@ const firebaseConfig = {
       console.error("خطأ في تحميل البيانات:", error);
     }
   }
+  
 
-  // ========== دالة النشر السريع الجديدة ==========
-  window.quickPublish = async function() {
-    const input = document.getElementById('quickPublishInput');
-    if (!input) return;
+    // ========== دوال التبويبين ==========
+
+// متغير لتتبع نوع المنشور الحالي
+let currentPublishType = 'blog';
+
+// تبديل التبويب
+window.switchPublishTab = function(type) {
+    currentPublishType = type;
     
-    const value = input.value.trim();
-    if (!value) {
-      showToast('الرجاء كتابة نص أو إضافة رابط', false);
-      return;
+    const tabBlog = document.getElementById('tabBlog');
+    const tabReels = document.getElementById('tabReels');
+    const reelsSection = document.getElementById('reelsSection');
+    const mediaUrlInput = document.getElementById('postMediaUrl');
+    const mediaPreview = document.getElementById('mediaPreview');
+    const postText = document.getElementById('postText');
+    
+    if (type === 'blog') {
+        // تفعيل تبويب المدونة
+        tabBlog.style.background = '#fbbf24';
+        tabBlog.style.color = '#0f172a';
+        tabReels.style.background = 'transparent';
+        tabReels.style.color = '#64748b';
+        
+        // إخفاء قسم الريلز
+        reelsSection.style.display = 'none';
+        mediaPreview.style.display = 'none';
+        
+        // تحديث placeholder
+        postText.placeholder = 'اكتب منشورك هنا...';
+        
+        // مسح الرابط إذا كان موجوداً
+        if (mediaUrlInput) mediaUrlInput.value = '';
+        
+    } else if (type === 'reels') {
+        // تفعيل تبويب الريلز
+        tabReels.style.background = '#fbbf24';
+        tabReels.style.color = '#0f172a';
+        tabBlog.style.background = 'transparent';
+        tabBlog.style.color = '#64748b';
+        
+        // إظهار قسم الريلز
+        reelsSection.style.display = 'block';
+        
+        // تحديث placeholder
+        postText.placeholder = 'اكتب وصف للريلز...';
+    }
+};
+
+// معاينة الوسائط
+window.previewMedia = function() {
+    const url = document.getElementById('postMediaUrl')?.value.trim();
+    const previewDiv = document.getElementById('mediaPreview');
+    const previewContent = document.getElementById('mediaPreviewContent');
+    
+    if (!url || !previewDiv || !previewContent) {
+        if (previewDiv) previewDiv.style.display = 'none';
+        return;
     }
     
-    if (!currentUser) {
-      showToast('يجب تسجيل الدخول', false);
-      return;
-    }
+    previewDiv.style.display = 'block';
     
-    let content = '';
-    let mediaUrl = '';
-    let mediaType = null;
-    
-    // التحقق مما إذا كان المدخل رابط
-    const urlPattern = /(https?:\/\/[^\s]+)/g;
-    const urls = value.match(urlPattern);
-    
-    if (urls && urls.length > 0) {
-      // استخراج أول رابط
-      mediaUrl = urls[0];
-      // استخراج النص بدون الرابط
-      content = value.replace(mediaUrl, '').trim();
-      
-      // تحديد نوع الوسائط
-      if (mediaUrl.includes('youtube.com') || mediaUrl.includes('youtu.be')) {
-        mediaType = 'youtube';
-        const videoId = mediaUrl.split('v=')[1]?.split('&')[0] || mediaUrl.split('/').pop();
-        mediaUrl = `https://www.youtube.com/embed/${videoId}`;
-      } else if (mediaUrl.match(/\.(jpeg|jpg|gif|png|webp)$/i)) {
-        mediaType = 'image';
-      } else {
-        mediaType = 'image'; // افتراضي
-      }
+    // التحقق من نوع الرابط
+    if (url.includes('youtube.com') || url.includes('youtu.be')) {
+        const videoId = url.split('v=')[1]?.split('&')[0] || url.split('/').pop();
+        if (videoId) {
+            previewContent.innerHTML = `
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px;">
+                    <iframe src="https://www.youtube.com/embed/${videoId}" 
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 15px;" 
+                            frameborder="0" allowfullscreen></iframe>
+                </div>
+                <p style="color: #10b981; margin-top: 8px; font-size: 12px;">
+                    <i class="fab fa-youtube" style="color: #ff0000;"></i> فيديو يوتيوب ✓
+                </p>
+            `;
+        } else {
+            previewContent.innerHTML = '<p style="color: #ef4444;">⚠️ رابط يوتيوب غير صالح</p>';
+        }
+    } else if (url.match(/\.(jpg|jpeg|png|gif|webp)(\?.*)?$/i) || url.includes('image')) {
+        previewContent.innerHTML = `
+            <img src="${url}" style="max-width: 100%; max-height: 200px; border-radius: 15px;" 
+                 onerror="this.parentElement.innerHTML='<p style=\'color:#ef4444;\'>⚠️ فشل تحميل الصورة</p>'">
+            <p style="color: #10b981; margin-top: 8px; font-size: 12px;">
+                <i class="fas fa-image"></i> صورة ✓
+            </p>
+        `;
     } else {
-      // نص فقط
-      content = value;
+        previewContent.innerHTML = '<p style="color: #f59e0b;">🔗 الرابط مضاف (سيتم التحقق عند النشر)</p>';
     }
-    
-    if (content.length > 500) {
-      showToast('الحد الأقصى 500 حرف', false);
-      return;
+};
+
+// إعادة ضبط نافذة النشر عند فتحها
+const originalOpenPublishModal = window.openModal;
+window.openModal = function(id) {
+    if (id === 'publishModal') {
+        // إعادة تعيين إلى تبويب المدونة
+        window.switchPublishTab('blog');
+        
+        // مسح الحقول
+        document.getElementById('postText').value = '';
+        document.getElementById('postMediaUrl').value = '';
+        document.getElementById('mediaPreview').style.display = 'none';
+        document.getElementById('charCounter').textContent = '0/500';
     }
-    
-    const newPost = {
-      userId: currentUserData?.userId || currentUser.uid.slice(0, 6),
-      username: currentUserData?.username || 'مستخدم',
-      emoji: currentUserData?.emoji || '😎',
-      avatarType: currentUserData?.avatarType || 'emoji',
-      avatarUrl: currentUserData?.avatarUrl || '',
-      colors: currentUserData?.colors || { frame: '#fbbf24', name: '#0f172a', id: '#8b5cf6', postText: '#334155', commentText: '#475569' },
-      verified: currentUserData?.verified || false,
-      content: content || '📷',
-      mediaUrl: mediaUrl || '',
-      mediaType: mediaType,
-      timestamp: Date.now(),
-      likes: 0,
-      likedBy: [],
-      comments: [],
-      views: 0,
-      shares: 0,
-      reports: [],
-      promotedUntil: 0
-    };
-    
-    try {
-      await addDoc(collection(db, "posts"), newPost);
-      
-      // مسح الحقل
-      input.value = '';
-      
-      showToast('✨ تم نشر منشورك');
-    } catch (error) {
-      console.error('خطأ في النشر:', error);
-      showToast('❌ فشل النشر', false);
-    }
-  };
+    originalOpenPublishModal(id);
+};
   function subscribeToUnreadMessages() {
     if (!currentUser) return;
     if (unsubscribeChats) unsubscribeChats();
@@ -1780,7 +2864,7 @@ const firebaseConfig = {
   function subscribeToPosts() {
     if (unsubscribePosts) unsubscribePosts();
     
-    const postsQuery = query(collection(db, "posts"));
+    const postsQuery = query(collection(db, "user_posts"));
     unsubscribePosts = onSnapshot(postsQuery, (snapshot) => {
       posts = [];
       snapshot.forEach(doc => {
@@ -2081,10 +3165,9 @@ const firebaseConfig = {
       return `
       <div class="post-card ${isPromoted ? 'promoted' : ''}" style="${trendStyle}">
         ${trendBadge}
-        ${followed && !isOwner ? '<div class="follow-badge"><i class="fas fa-check"></i> متابَع</div>' : ''}
+        ${followed && !isOwner ? '<div class="follow-badge"><i class="fas fa-check"></i></div>' : ''}
         <div class="post-header">
-          <div class="post-avatar" onclick="window.openProfile('${post.userId}')" style="border-color: ${post.colors?.frame || '#fbbf24'};">${renderAvatar(post)}</div>
-          <div class="post-user-details">
+          <div class="post-avatar" onclick="window.openProfile('${post.userId}')">${renderAvatarWithFrame(post)}</div>          <div class="post-user-details">
             <div class="post-username" onclick="window.openProfile('${post.userId}')" style="color:${post.colors?.name || '#0f172a'}">
               ${post.username || 'مستخدم'}
               ${isVerified ? '<i class="fas fa-check-circle verified-badge"></i>' : ''}
@@ -2133,7 +3216,7 @@ const firebaseConfig = {
   if (navigator.share) {
     try {
       await navigator.share(shareData);
-      await updateDoc(doc(db, "posts", postId), { shares: increment(1) });
+      await updateDoc(doc(db, "user_posts", postId), { shares: increment(1) });
       showToast('✅ تمت المشاركة بنجاح');
     } catch (err) {
       // المستخدم ألغى المشاركة
@@ -2184,7 +3267,7 @@ const firebaseConfig = {
       try {
         await navigator.clipboard.writeText(shareText);
         showToast('📋 تم نسخ النص');
-        await updateDoc(doc(db, "posts", postId), { shares: increment(1) });
+        await updateDoc(doc(db, "user_posts", postId), { shares: increment(1) });
       } catch (e) {
         showToast('❌ فشل النسخ', false);
       }
@@ -2339,7 +3422,7 @@ window.acceptReport = async function(reportId, postId) {
   if (newCount >= 3) {
     // حذف المنشور فقط عند قبول 3 بلاغات
     try {
-      await deleteDoc(doc(db, "posts", postId));
+      await deleteDoc(doc(db, "user_posts", postId));
     } catch (e) {
       console.log('المنشور محذوف مسبقاً');
     }
@@ -2460,7 +3543,7 @@ window.rejectReport = async function(reportId) {
 };
   window.toggleLike = async function(postId) {
     if (!currentUser) return;
-    const postRef = doc(db, "posts", postId);
+    const postRef = doc(db, "user_posts", postId);
     const post = posts.find(p => p.id === postId);
     if (!post) return;
     
@@ -2543,7 +3626,7 @@ window.rejectReport = async function(reportId) {
     
     if (!viewedPosts.has(postId)) {
       viewedPosts.add(postId);
-      await updateDoc(doc(db, "posts", postId), { views: increment(1) });
+      await updateDoc(doc(db, "user_posts", postId), { views: increment(1) });
       await setDoc(doc(db, "viewed_posts", currentUser.uid), { 
         posts: Array.from(viewedPosts) 
       });
@@ -2578,6 +3661,11 @@ window.rejectReport = async function(reportId) {
   };
 
   window.submitComment = async function() {
+     
+    if (window.ADMIN_allow_comments === false) {
+        showToast('🚫 التعليقات معلقة حالياً', false);
+        return;
+    } 
     const inp = document.getElementById('newCommentInput');
     if (!inp) return;
     const text = inp.value.trim();
@@ -2596,7 +3684,7 @@ window.rejectReport = async function(reportId) {
       timestamp: Date.now()
     };
     
-    await updateDoc(doc(db, "posts", activePostId), {
+    await updateDoc(doc(db, "user_posts", activePostId), {
       comments: arrayUnion(comment)
     });
     
@@ -2610,7 +3698,7 @@ window.rejectReport = async function(reportId) {
     if (!post) return;
     const comment = post.comments?.find(c => c.id === commentId);
     if (comment) {
-      await updateDoc(doc(db, "posts", postId), {
+      await updateDoc(doc(db, "user_posts", postId), {
         comments: arrayRemove(comment)
       });
       showToast('تم حذف التعليق');
@@ -2640,7 +3728,7 @@ window.rejectReport = async function(reportId) {
             resources.elixir -= daysNum;
             await setDoc(doc(db, "resources", currentUser.uid), resources);
             
-            await updateDoc(doc(db, "posts", postId), {
+            await updateDoc(doc(db, "user_posts", postId), {
                 promotedUntil: Date.now() + daysNum * 86400000
             });
             
@@ -2660,44 +3748,65 @@ window.rejectReport = async function(reportId) {
         post.content,
         async (newContent) => {
             if (newContent && newContent !== post.content) {
-                await updateDoc(doc(db, "posts", postId), { content: newContent });
+                await updateDoc(doc(db, "user_posts", postId), { content: newContent });
                 showToast('✅ تم تعديل المنشور');
             }
         }
     );
   };
 
-  window.publishPost = async function() {
-    const content = document.getElementById('postText')?.value.trim();
-    const mediaUrl = document.getElementById('postMediaUrl')?.value.trim();
-    if (!content && !mediaUrl) {
-        showToast('الرجاء كتابة نص أو إضافة  وسائط', false);
+  
+  // تحديث دالة النشر
+window.publishPost = async function() {
+    
+    if (window.ADMIN_allow_posting === false) {
+        showToast('🚫 النشر معلق حالياً من قبل الإدارة', false);
         return;
     }
+    
+   
+    const content = document.getElementById('postText')?.value.trim();
+    const mediaUrl = document.getElementById('postMediaUrl')?.value.trim();
+    
+    
+    // التحقق من المحتوى حسب نوع المنشور
+    if (currentPublishType === 'blog') {
+        if (!content) {
+            showToast('الرجاء كتابة نص المدونة', false);
+            return;
+        }
+    } else if (currentPublishType === 'reels') {
+        if (!mediaUrl) {
+            showToast('الرجاء إضافة رابط الصورة أو اليوتيوب للريلز', false);
+            return;
+        }
+    }
+    
     if (!currentUser) return;
     
     if (content.length > 500) {
-      showToast('الحد الأقصى 500 حرف', false);
-      return;
+        showToast('الحد الأقصى 500 حرف', false);
+        return;
     }
     
     const promoDays = parseInt(document.getElementById('promoDays')?.value || '0');
     if (promoDays > 0 && (resources.elixir || 0) < promoDays) { 
-      showToast('إكسير غير كافٍ', false); 
-      return; 
+        showToast('إكسير غير كافٍ', false); 
+        return; 
     }
     
     if (promoDays > 0) {
-      resources.elixir -= promoDays;
-      await setDoc(doc(db, "resources", currentUser.uid), resources);
+        resources.elixir -= promoDays;
+        await setDoc(doc(db, "resources", currentUser.uid), resources);
     }
     
+    // معالجة الوسائط للريلز
     let mediaType = null;
     let finalMediaUrl = mediaUrl;
-    if (mediaUrl) {
+    
+    if (currentPublishType === 'reels' && mediaUrl) {
         if (mediaUrl.includes('youtube.com') || mediaUrl.includes('youtu.be')) {
             mediaType = 'youtube';
-            // تحويل إلى  تضمين
             const videoId = mediaUrl.split('v=')[1]?.split('&')[0] || mediaUrl.split('/').pop();
             finalMediaUrl = `https://www.youtube.com/embed/${videoId}`;
         } else {
@@ -2706,34 +3815,53 @@ window.rejectReport = async function(reportId) {
     }
     
     const newPost = {
-      userId: currentUserData?.userId || currentUser.uid.slice(0, 6),
-      username: currentUserData?.username || 'مستخدم',
-      emoji: currentUserData?.emoji || '😎',
-      avatarType: currentUserData?.avatarType || 'emoji',
-      avatarUrl: currentUserData?.avatarUrl || '',
-      colors: currentUserData?.colors || { frame: '#fbbf24', name: '#0f172a', id: '#8b5cf6', postText: '#334155', commentText: '#475569' },
-      verified: currentUserData?.verified || false,
-      content: content,
-      mediaUrl: finalMediaUrl,
-      mediaType: mediaType,
-      timestamp: Date.now(),
-      likes: 0,
-      likedBy: [],
-      comments: [],
-      views: 0,
-      shares: 0,
-      reports: [],
-      promotedUntil: promoDays > 0 ? Date.now() + promoDays * 86400000 : 0
+        userId: currentUserData?.userId || currentUser.uid.slice(0, 6),
+        username: currentUserData?.username || 'مستخدم',
+        emoji: currentUserData?.emoji || '😎',
+        avatarType: currentUserData?.avatarType || 'emoji',
+        avatarUrl: currentUserData?.avatarUrl || '',
+        colors: currentUserData?.colors || { frame: '#fbbf24', name: '#0f172a', id: '#8b5cf6', postText: '#334155', commentText: '#475569' },
+        verified: currentUserData?.verified || false,
+        content: content,
+        mediaUrl: finalMediaUrl,
+        mediaType: mediaType,
+        postType: currentPublishType, // نوع المنشور: blog أو reels
+        timestamp: Date.now(),
+        likes: 0,
+        likedBy: [],
+        comments: [],
+        views: 0,
+        shares: 0,
+        reports: [],
+        promotedUntil: promoDays > 0 ? Date.now() + promoDays * 86400000 : 0
     };
     
-    await addDoc(collection(db, "posts"), newPost);
+    await addDoc(collection(db, "user_posts"), newPost);
     
     updateResourcesUI();
     closeModal('publishModal');
+    
+    // تنظيف الحقول
     document.getElementById('postText').value = '';
     document.getElementById('postMediaUrl').value = '';
-    showToast('✨ تم نشر منشورك');
-  };
+    document.getElementById('mediaPreview').style.display = 'none';
+    
+    showToast('✨ تم نشر منشورك بنجاح');
+};
+
+// إضافة مستمع للرابط للمعاينة المباشرة
+document.addEventListener('DOMContentLoaded', function() {
+    const mediaInput = document.getElementById('postMediaUrl');
+    if (mediaInput) {
+        mediaInput.addEventListener('input', function() {
+            window.previewMedia();
+        });
+    }
+});
+
+// تصدير الدوال الجديدة
+window.switchPublishTab = window.switchPublishTab;
+window.previewMedia = window.previewMedia;
 
   window.deletePost = async function(postId) {
     showConfirmDialog(
@@ -2743,7 +3871,7 @@ window.rejectReport = async function(reportId) {
         'إلغاء',
         async (confirmed) => {
             if (confirmed) {
-                await deleteDoc(doc(db, "posts", postId));
+                await deleteDoc(doc(db, "user_posts", postId));
                 showToast('✅ تم حذف المنشور');
             }
         }
@@ -3022,10 +4150,10 @@ window.openProfile = async function(userId) {
     if (isOwnProfile) {
         actionButtonsContainer.innerHTML = `
             <button onclick="window.openAccountSettings()" style="flex:1; background:#333; color:#fff; border:none; padding:12px; border-radius:8px; font-weight:700; cursor:pointer;">
-                <i class="fas fa-cog"></i> الضبط
+                <i class="fas fa-cog"></i> تعديل الملف الشخصي
             </button>
             <button onclick="window.shareProfile()" style="flex:1; background:#333; color:#fff; border:none; padding:12px; border-radius:8px; font-weight:700; cursor:pointer;">
-                <i class="fas fa-share-alt"></i> مشاركة الملف
+                <i class="fas fa-share-alt"></i>   مشاركة الملف الشخصي
             </button>
         `;
     } else {
@@ -3899,6 +5027,9 @@ window.invitePartner = async function() {
       currentUser = user;
       await loadUserData(user.uid);
       
+ 
+await loadAdminSettings(); // ← أضف هذا السطر       
+        
       if (!currentUserData?.userId) {
         const userId = user.uid.slice(0, 6);
         currentUserData = { ...currentUserData, userId: userId };
@@ -4068,6 +5199,10 @@ window.previewStory = function() {
 
 // نشر الستوري
 window.publishStory = async function() {
+       if (window.ADMIN_allow_stories === false) {
+        showToast('🚫 القصص معلقة حالياً', false);
+        return;
+    }
     if (!currentUserData) {
         showToast('يجب تسجيل الدخول', false);
         return;
@@ -4667,6 +5802,40 @@ window.renderStoriesRow = function() {
     }).join('');
 };
 
+    // ========== نظام الوضع المظلم ==========
+function toggleTheme() {
+    const body = document.body;
+    const icon = document.getElementById('themeIcon');
+    
+    body.classList.toggle('dark-mode');
+    
+    if (body.classList.contains('dark-mode')) {
+        icon.className = 'fas fa-sun';
+        localStorage.setItem('theme', 'dark');
+        showToast('🌙 تم تفعيل الوضع المظلم');
+    } else {
+        icon.className = 'fas fa-moon';
+        localStorage.setItem('theme', 'light');
+        showToast('☀️ تم تفعيل الوضع المضيء');
+    }
+}
+
+// تحميل الإعدادات المحفوظة
+function loadTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const icon = document.getElementById('themeIcon');
+    
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        if (icon) icon.className = 'fas fa-sun';
+    }
+}
+
+// استدعاء عند التحميل
+window.addEventListener('load', loadTheme);
+
+// تصدير الدالة
+window.toggleTheme = toggleTheme;
 // تحديث ستوريات الملف الشخصي
 window.renderProfileStories = function(userId) {
     const container = document.getElementById('profileStoriesContainer');
